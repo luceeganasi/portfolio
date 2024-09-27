@@ -23,33 +23,21 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-family: var(--font-heading);
+    font-family: 'Lora', serif;
     font-weight: 700;
-    font-size: 5.5rem;
+    font-size: 8rem;
     margin: 50px auto 0 auto;
     line-height: 2;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 6rem;
     font-weight: bold;
 }
 
 h3 {
     font-weight: 400;
     font-size: 2rem;
-}
-
-p {
-    font-family: var(--font-accent);
-    font-size: 1rem;
-    line-height: 2;
-}
-
-a {
-    color: var(--color-primary);
-    text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 hr {
@@ -60,57 +48,50 @@ hr {
     margin: 80px auto;
 }
 
+p {
+    color: #497174;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 2;
+}
+
+a {
+    color: #EB6440;
+    text-decoration: none;
+}
+
 a:hover {
-    color: #d55736;
+    color: rgb(255, 137, 104);
 }
 
-/* Utility Classes */
-.big-header {
-    font-size: 8rem;
-}
-
-.md-header {
-    font-size: 2.5rem;
-}
-
-/* Layout Components */
-.top-container {
-    padding: 5%;
-    position: relative;
-}
-
-.middle-container {
-    background-color: #D6E4E5;
-    padding: 80px 0;
-}
-
-.bottom-container {
-    background-color: #D6E4E5;
-    padding: 60px 0;
-}
-
-/* Navigation */
+/* Navbar */
 .navbar {
     padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between; /* This spaces out the navbar-brand and navbar-menu */
+    align-items: center;
     background-color: #f8f9fa;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar-toggler {
+    display: none;
 }
 
 .navbar-brand img {
     width: 50px;
 }
 
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Ensures space-between layout within nav-container */
+    width: 100%;
+    align-items: center;
+}
+
 .navbar-menu ul {
     display: flex;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
 }
 
 .navbar-menu ul li {
@@ -122,14 +103,12 @@ a:hover {
     font-weight: 500;
 }
 
-.navbar-toggler {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
+/* Top container */
+.top-container {
+    padding: 5%;
+    position: relative;
 }
 
-/* Hero Section */
 .cloud-top, .cloud-bottom {
     position: absolute;
 }
@@ -150,7 +129,12 @@ a:hover {
     width: 40%;
 }
 
-/* Profile Section */
+/* Middle container */
+.middle-container {
+    background-color: #D6E4E5;
+    padding: 80px 0;
+}
+
 .profile {
     max-width: 800px;
     margin: 0 auto;
@@ -169,8 +153,9 @@ a:hover {
     font-size: 1.5rem;
 }
 
-/* Skills Section */
+/* Skills section */
 .skills {
+    background-color: #EFF5F5;
     padding: 60px 0;
 }
 
@@ -200,14 +185,25 @@ a:hover {
     width: 40%;
 }
 
-/* Contact Section */
+/* Contact section */
+
 #contact-section {
     padding-bottom: 100px;
 }
+.contact-me {
+    background-color: #EFF5F5;
+}
+
+.contact-me p {
+    color: #497174;
+}
+
+.contact-me a {
+    color: white;
+}
 
 .btn {
-    background-color: var(--color-primary);
-    color: white;
+    background-color: #EB6440;
     padding: 1rem 2rem;
     font-size: 1.5rem;
     font-weight: 500;
@@ -217,11 +213,18 @@ a:hover {
 }
 
 .btn:hover {
-    background-color: #d55736;
-    color: white;
+    background-color: #EFF5F5;
+    border-style: solid;
+    border-color: #EB6440;
+    color: #EB6440;
 }
 
 /* Footer */
+.bottom-container {
+    background-color: #D6E4E5;
+    padding: 60px 0;
+}
+
 .icons-container {
     display: inline-block;
     margin: 0 1rem;
@@ -235,42 +238,161 @@ footer i {
     margin-right: 0.5rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Show navbar-toggler for mobile */
+.navbar-toggler {
+    display: block; /* Show only on mobile */
+    background-color: #EB6440;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-toggler-icon {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    display: block;
+    margin: 5px auto;
+}
+
+/* Hide the menu initially */
+.navbar-menu {
+    display: none; /* Hidden by default */
+}
+
+/* Display the menu when toggled */
+.navbar-menu.show {
+    display: block;
+}
+
+/* Mobile styles for screens 600px and below */
+@media (max-width: 600px) {
+    /* Adjusting font sizes */
     h1 {
-        font-size: 3rem;
+        font-size: 2.5rem; /* Reduce size for mobile */
+    }
+
+    h2 {
+        font-size: 6rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem; /* Slightly smaller text */
+    }
+
+    /* Navbar adjustments */
+    .navbar {
+        flex-direction: column; /* Stack logo and menu */
+        align-items: flex-start;
+    }
+
+    .navbar-menu ul {
+        flex-direction: column; /* Stack menu items */
+        width: 100%; 
+        padding: 0;
+    }
+
+    .navbar-menu ul li {
+        margin: 1rem 0;
+    }
+
+    /* Adjust container paddings */
+    .top-container, .middle-container, .skills, .contact-me, .bottom-container {
+        padding: 5% 10px; /* Reduce side padding */
+    }
+
+    /* Center the clouds for mobile */
+    .cloud-bottom {
+        left: 60%;
+        right: 0%;
+        margin: auto;
+        width: 30%; /* Adjust size for mobile */
+    }
+
+    .cloud-top {
+        left: 0%;
+        right: 80%;
+        margin: auto;
+        width: 30%; /* Adjust size for mobile */
+    }
+
+    .mountain {
+        width: 60%; /* Reduce mountain size for mobile */
     }
 
     .big-header {
         font-size: 3rem;
     }
 
-    .navbar-menu {
-        display: none;
+    /* Middle container */
+    .middle-container {
+        background-color: #D6E4E5;
+        padding: 80px 0;
     }
 
-    .navbar-menu.show {
-        display: block;
+    .profile {
+        max-width: 800px;
+        margin: 0 auto;
     }
 
-    .navbar-toggler {
-        display: block;
+    .profile-photo {
+        width: 150px;
+        border-radius: 50%;
     }
 
-    .navbar-nav {
-        flex-direction: column;
+    .hello {
+        margin: 30px 0;
+        font-size: 6rem;
     }
 
+    .info {
+        font-size: 1rem;
+    }
+
+    /* Skills section */
     .skill-row {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* Stack skill image and text */
+        text-align: center; /* Center text */
     }
 
     .skill-text, .design-photo, .photography-photo {
-        width: 100%;
+        width: 100%; /* Full width on mobile */
+        padding: 0;
     }
 
     .design-photo, .photography-photo {
-        margin: 20px 0;
+        margin: 20px 0; /* Add spacing between text and images */
+        width: 70%;
+    }
+
+    /* Contact Section */
+    .btn {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    /* Footer */
+    .icons-container {
+        display: block;
+        margin: 10px 0; /* Stack icons */
+    }
+
+    .footer-link {
+        font-size: 1rem; /* Reduce font size */
+    }
+}
+
+/* Media query to hide the toggle button on larger screens */
+@media (min-width: 601px) {
+    .navbar-menu {
+        display: flex; /* Display menu normally */
+    }
+
+    .navbar-toggler {
+        display: none; /* Hide toggle button on larger screens */
     }
 }
